@@ -7,7 +7,7 @@
       <field name="model">treming_mario_gomez.treming_mario_gomez</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="date" />
+          <field name="date"/>
           <field name="name" />
           <field name="value"/>
           <field name="description" />
@@ -24,10 +24,10 @@
           <sheet>
             <group>
               <group name="name" string="Formulario de Visitas Hospital">
-                <field name="date" />
-                <field name="name" />
-                <field name="value"/>
-                <field name="description" />
+                <field name="date" required='1'/>
+                <field name="name" required='1'/>
+                <field name="value" required='1'/>
+                <field name="description" required='1'/>
               </group>
             </group>
           </sheet>
