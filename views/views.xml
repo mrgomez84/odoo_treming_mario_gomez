@@ -1,0 +1,80 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="treming_mario_gomez.list">
+      <field name="name">treming_mario_gomez list</field>
+      <field name="model">treming_mario_gomez.treming_mario_gomez</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="date" />
+          <field name="name" />
+          <field name="value"/>
+          <field name="description" />
+        </tree>
+      </field>
+    </record>
+
+      <!-- Esta es una vista de formulario xml -->
+    <record id="mario_test_view_form" model="ir.ui.view">
+      <field name="name">treming_mario_gomez</field>
+      <field name="model">treming_mario_gomez.treming_mario_gomez</field>
+      <field name="arch" type="xml">
+        <form string="Prueba Tecnica de Odoo">
+          <sheet>
+            <group>
+              <group name="name" string="Formulario de Visitas Hospital">
+                <field name="date" />
+                <field name="name" />
+                <field name="value"/>
+                <field name="description" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="treming_mario_gomez.action_window">
+      <field name="name">treming_mario_gomez window</field>
+      <field name="res_model">treming_mario_gomez.treming_mario_gomez</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="treming_mario_gomez.action_server">
+      <field name="name">treming_mario_gomez server</field>
+      <field name="model_id" ref="model_treming_mario_gomez_treming_mario_gomez"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="treming_mario_gomez" id="treming_mario_gomez.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="treming_mario_gomez.menu_1" parent="treming_mario_gomez.menu_root"/>
+    <menuitem name="Menu 2" id="treming_mario_gomez.menu_2" parent="treming_mario_gomez.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List" id="treming_mario_gomez.menu_1_list" parent="treming_mario_gomez.menu_1"
+              action="treming_mario_gomez.action_window"/>
+    <menuitem name="Server to list" id="treming_mario_gomez" parent="treming_mario_gomez.menu_2"
+              action="treming_mario_gomez.action_server"/>
+
+  </data>
+</odoo>
